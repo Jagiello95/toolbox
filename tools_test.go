@@ -59,7 +59,7 @@ func TestTools_ReadJSON(t *testing.T) {
 	testApp.MaxFileSize = 1048576 * 2
 
 	// create a sample JSON file and add it to body
-	sampleJSON := map[string]interface{}{
+	sampleJSON := map[string]any{
 		"foo": "bar",
 	}
 	body, _ := json.Marshal(sampleJSON)
