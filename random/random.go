@@ -1,4 +1,4 @@
-package toolbox
+package random
 
 import (
 	"fmt"
@@ -9,19 +9,23 @@ import (
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-type Random struct{}
+func NewRandomUtil() RandomUtil {
+	return RandomUtil{}
+}
+
+type RandomUtil struct{}
 
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
 // RandomInt generates a random integer between min and max
-func (r *Random) RandomInt(min, max int64) int64 {
+func (r *RandomUtil) RandomInt(min, max int64) int64 {
 	return min + rand.Int63n(max-min+1)
 }
 
 // RandomString generates a random string of length n
-func (r *Random) RandomString(n int) string {
+func (r *RandomUtil) RandomString(n int) string {
 	var sb strings.Builder
 	k := len(alphabet)
 
@@ -34,23 +38,23 @@ func (r *Random) RandomString(n int) string {
 }
 
 // RandomOwner generates a random owner name
-func (r *Random) RandomOwner() string {
+func (r *RandomUtil) RandomOwner() string {
 	return r.RandomString(6)
 }
 
 // RandomMoney generates a random amount of money
-func (r *Random) RandomMoney() int64 {
+func (r *RandomUtil) RandomMoney() int64 {
 	return r.RandomInt(0, 1000)
 }
 
 // RandomCurrency generates a random currency code
-func (r *Random) RandomCurrency() string {
+func (r *RandomUtil) RandomCurrency() string {
 	currencies := []string{"USD", "EUR", "CAD"}
 	n := len(currencies)
 	return currencies[rand.Intn(n)]
 }
 
 // RandomEmail generates a random email
-func (r *Random) RandomEmail() string {
+func (r *RandomUtil) RandomEmail() string {
 	return fmt.Sprintf("%s@email.com", r.RandomString(6))
 }

@@ -1,4 +1,4 @@
-module github.com/Jagiello95/toolbox
+module github.com/Jagiello95/common
 
 go 1.18
 
